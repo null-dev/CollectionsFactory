@@ -15,7 +15,7 @@ import java.util.concurrent.TransferQueue;
 @SuppressWarnings("WeakerAccess")
 public class CollectionsFactory {
     private static CollectionsProvider fallbackProvider = new DefaultCollectionsProvider();
-    private static List<CollectionsProvider> collectionsProviders = newConcurrentList(CollectionsProvider.class);
+    private static List<CollectionsProvider> collectionsProviders = fallbackProvider.newConcurrentList(CollectionsProvider.class);
 
     public static void registerProvider(CollectionsProvider provider) {
         if(provider != null && !collectionsProviders.contains(provider)) {
